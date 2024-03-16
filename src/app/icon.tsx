@@ -15,7 +15,7 @@ export default function Icon() {
   return new ImageResponse(
     (
       // ImageResponse JSX element
-      <div tw="flex flex h-full w-full items-center justify-center bg-black text-[24px] text-white">
+      <div tw="flex size-full items-center justify-center bg-black text-[24px] text-white">
         W
       </div>
     ),

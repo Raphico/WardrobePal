@@ -3,6 +3,8 @@ import { Inter } from "next/font/google"
 
 import "./globals.css"
 
+import { env } from "@/env"
+
 import { absoluteUrl, cn } from "@/lib/utils"
 
 import { siteConfig } from "../config/site"
@@ -10,6 +12,7 @@ import { siteConfig } from "../config/site"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
