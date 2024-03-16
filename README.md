@@ -1,4 +1,4 @@
-# [WardrobePal](https://wardrobePal.vercel.app/)
+# [WardrobePal](https://wardrobe-pal.vercel.app/)
 
 A web app for managing clothing inventory and creating virtual outfits
 
