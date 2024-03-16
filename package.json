@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "check": "pnpm lint && pnpm format:check"
+    "check": "npm run lint && npm run format:check"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.9.2",
