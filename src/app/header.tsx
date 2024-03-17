@@ -1,8 +1,9 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+
+import { siteConfig } from "./site"
 
 export function Header() {
   return (

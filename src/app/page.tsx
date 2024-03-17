@@ -1,11 +1,11 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 import { Footer } from "./footer"
 import { Header } from "./header"
+import { siteConfig } from "./site"
 
 export default function Home() {
   return (

@@ -7,7 +7,7 @@ import { env } from "@/env"
 
 import { absoluteUrl, cn } from "@/lib/utils"
 
-import { siteConfig } from "../config/site"
+import { siteConfig } from "./site"
 
 const inter = Inter({ subsets: ["latin"] })
 
