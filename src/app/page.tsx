@@ -32,19 +32,13 @@ export default function Home() {
             style assistant is here.
           </p>
           <div className="flex items-center gap-4">
-            <Link
-              href="/sign-in"
-              className={buttonVariants({
-                size: "sm",
-              })}
-            >
+            <Link href="/sign-in" className={buttonVariants()}>
               Get Started
             </Link>
             <Link
               href={siteConfig.links.github}
               className={buttonVariants({
                 variant: "outline",
-                size: "sm",
               })}
               target="_blank"
               rel="noreferrer"
