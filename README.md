@@ -2,6 +2,8 @@
 
 A web app for managing clothing inventory and creating virtual outfits
 
+[![WardrobePal](./public/images/screenshot.png)](https://wardrobe-pal.vercel.app/)
+
 ## Tech Stack
 
 - **Framework:** [Next.js](https://nextjs.org)
@@ -15,7 +17,7 @@ A web app for managing clothing inventory and creating virtual outfits
 
 - [x] Project setup
 - [x] SEO optimization
-- [ ] add landing page
+- [x] add landing page
 - [ ] Implement authentication using Lucia
 - [ ] Develop wardrobe page with CRUD operations for clothing items
 - [ ] Add search and filtering functionality for the wardrobe page
