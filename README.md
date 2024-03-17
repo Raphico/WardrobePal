@@ -2,7 +2,7 @@
 
 A web app for managing clothing inventory and creating virtual outfits
 
-[![WardrobePal](./public/images/screenshot.png)](https://wardrobe-pal.vercel.app/)
+[![WardrobePal](./public/images/Screenshot.png)](https://wardrobe-pal.vercel.app/)
 
 ## Tech Stack
 
