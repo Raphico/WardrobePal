@@ -7,6 +7,7 @@ import { env } from "@/env"
 
 import { absoluteUrl, cn } from "@/lib/utils"
 
+import ConvexClientProvider from "./convex-client-provider"
 import { siteConfig } from "./site"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -67,7 +68,7 @@ export default function RootLayout({
           inter.className
         )}
       >
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   )
