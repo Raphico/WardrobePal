@@ -17,7 +17,7 @@ export default function Home() {
       </div>
 
       <Header />
-      <main className="flex w-full flex-1 flex-col items-center pt-24 md:py-36">
+      <main className="mt-24 flex w-full flex-1 flex-col items-center md:mt-36">
         <div className="container flex flex-col items-center justify-center space-y-4">
           <h1 className="text-center text-4xl font-bold leading-[1.15] sm:text-6xl">
             Manage & style

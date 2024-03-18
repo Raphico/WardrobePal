@@ -8,9 +8,8 @@ A web app for managing clothing inventory and creating virtual outfits
 
 - **Framework:** [Next.js](https://nextjs.org)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)
-- **User Management:** [lucia](https://lucia-auth.com/)
-- **Database:** [Neon](https://neon.tech/)
-- **ORM:** [Drizzle ORM](https://orm.drizzle.team)
+- **User Management:** [clerk](https://clerk.com/)
+- **Baas:** [Convex](https://www.convex.dev/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com)
 
 ## Roadmap
@@ -18,7 +17,8 @@ A web app for managing clothing inventory and creating virtual outfits
 - [x] Project setup
 - [x] SEO optimization
 - [x] add landing page
-- [ ] Implement authentication using Lucia
+- [ ] setup convex
+- [ ] Implement authentication with clerk
 - [ ] Develop wardrobe page with CRUD operations for clothing items
 - [ ] Add search and filtering functionality for the wardrobe page
 - more
