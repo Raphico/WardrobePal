@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 
 import { env } from "@/env"
+import { Toaster } from "sonner"
 
 import { absoluteUrl, cn } from "@/lib/utils"
 
@@ -69,6 +70,7 @@ export default function RootLayout({
         )}
       >
         <ConvexClientProvider>{children}</ConvexClientProvider>
+        <Toaster />
       </body>
     </html>
   )
