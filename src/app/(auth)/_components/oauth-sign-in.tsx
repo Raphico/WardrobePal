@@ -36,8 +36,6 @@ export function OAuthSignIn() {
       })
     } catch (err) {
       catchClerkError(err)
-    } finally {
-      setLoading(null)
     }
   }
 

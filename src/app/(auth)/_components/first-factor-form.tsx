@@ -44,8 +44,6 @@ export function FirstFactorForm() {
       }
     } catch (err) {
       catchClerkError(err)
-    } finally {
-      setIsVerifying(false)
     }
   }
 

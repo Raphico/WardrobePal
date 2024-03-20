@@ -43,8 +43,6 @@ export function VerifyEmailForm() {
       }
     } catch (err) {
       catchClerkError(err)
-    } finally {
-      setIsVerifying(false)
     }
   }
 

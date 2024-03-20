@@ -71,8 +71,6 @@ export function SignInForm() {
       }
     } catch (err) {
       catchClerkError(err)
-    } finally {
-      setIsLoading(false)
     }
   }
 
