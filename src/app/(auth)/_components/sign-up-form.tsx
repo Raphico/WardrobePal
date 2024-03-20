@@ -65,6 +65,7 @@ export function SignUpForm() {
       router.push("/sign-up/verify-email")
     } catch (err) {
       catchClerkError(err)
+      setIsLoading(false)
     }
   }
 

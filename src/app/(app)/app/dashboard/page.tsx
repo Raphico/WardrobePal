@@ -2,9 +2,8 @@ import type { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { env } from "@/env"
 
+import { getUser } from "@/lib/get-user"
 import { Shell } from "@/components/shell"
-
-import { getUser } from "../../../../../convex/utils"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -21,7 +20,7 @@ export default async function Dashboard() {
 
   return (
     <Shell>
-      <h1 className="text-xl font-bold">Hi, {user.username}</h1>
+      <h1 className="text-xl font-bold">Hi</h1>
     </Shell>
   )
 }

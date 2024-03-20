@@ -30,6 +30,7 @@
     "react-hook-form": "^7.51.1",
     "server-only": "^0.0.1",
     "sonner": "^1.4.3",
+    "svix": "^1.21.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "uninstall": "^0.0.0",
