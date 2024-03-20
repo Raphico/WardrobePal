@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
+import { redirect } from "next/navigation"
+import { getUser } from "@/data-access/user/get-user"
 import { env } from "@/env"
-import { UserButton } from "@clerk/nextjs"
+
+import { Shell } from "@/components/shell"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -8,11 +11,15 @@ export const metadata: Metadata = {
   description: "Welcome to WardrobePal's dashboard",
 }
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const user = await getUser()
+
+  if (!user) {
+    redirect("/sign-in")
+  }
   return (
-    <div>
-      <h1>Welcome to WardrobePal. This is the dashboard page</h1>
-      <UserButton afterSignOutUrl="/sign-in" />
-    </div>
+    <Shell>
+      <h1 className="text-xl font-bold">Hi, {user.username}</h1>
+    </Shell>
   )
 }
