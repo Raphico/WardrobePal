@@ -3,6 +3,8 @@ import { env } from "@/env"
 
 import { Shell } from "@/components/shell"
 
+import { AddItem } from "./add-item"
+
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   title: "Wardrobe",
@@ -10,5 +12,11 @@ export const metadata: Metadata = {
 }
 
 export default function Dashboard() {
-  return <Shell></Shell>
+  return (
+    <Shell>
+      <div className="flex items-center justify-end">
+        <AddItem />
+      </div>
+    </Shell>
+  )
 }

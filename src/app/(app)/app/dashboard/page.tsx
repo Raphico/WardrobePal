@@ -20,7 +20,7 @@ export default async function Dashboard() {
 
   return (
     <Shell>
-      <h1 className="text-xl font-bold">Hi</h1>
+      <h1 className="text-xl font-bold">Hi, {user.username}</h1>
     </Shell>
   )
 }

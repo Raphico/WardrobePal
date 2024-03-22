@@ -17,6 +17,7 @@ import type {
 import type * as clerk from "../clerk.js";
 import type * as http from "../http.js";
 import type * as users from "../users.js";
+import type * as wardrobe from "../wardrobe.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   clerk: typeof clerk;
   http: typeof http;
   users: typeof users;
+  wardrobe: typeof wardrobe;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
