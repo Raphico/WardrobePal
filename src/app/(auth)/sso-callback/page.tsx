@@ -3,7 +3,7 @@ import { type HandleOAuthCallbackParams } from "@clerk/types"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shell } from "@/components/shell"
 
-import { SSOCallback } from "../_components/sso-callback"
+import { SSOCallback } from "./sso-callback"
 
 export interface SSOCallbackPageProps {
   searchParams: HandleOAuthCallbackParams

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Shell } from "@/components/shell"
 
-import { FirstFactorForm } from "../../_components/first-factor-form"
+import { FirstFactorForm } from "./first-factor-form"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

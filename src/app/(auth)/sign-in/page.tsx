@@ -13,8 +13,8 @@ import {
 import { Icons } from "@/components/icons"
 import { Shell } from "@/components/shell"
 
-import { OAuthSignIn } from "../_components/oauth-sign-in"
-import { SignInForm } from "../_components/sign-in-form"
+import { OAuthSignIn } from "../oauth-sign-in"
+import { SignInForm } from "./sign-in-form"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

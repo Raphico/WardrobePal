@@ -7,7 +7,7 @@ import { UserButton } from "@clerk/nextjs"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
-import { appConfig } from "../app"
+import { appConfig } from "./app"
 import { MobileNav } from "./mobile-nav"
 
 export function Header() {

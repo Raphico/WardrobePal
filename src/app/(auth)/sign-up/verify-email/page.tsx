@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Shell } from "@/components/shell"
 
-import { VerifyEmailForm } from "../../_components/verify-email-form"
+import { VerifyEmailForm } from "./verify-email-form"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

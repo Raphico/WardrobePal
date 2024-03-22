@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
-import { appConfig } from "../app"
+import { appConfig } from "./app"
 
 export function MobileNav() {
   const pathname = usePathname()
