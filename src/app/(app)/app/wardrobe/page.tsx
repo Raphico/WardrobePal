@@ -4,6 +4,7 @@ import { env } from "@/env"
 import { Shell } from "@/components/shell"
 
 import { AddItem } from "./add-item"
+import { Items } from "./items"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -17,6 +18,8 @@ export default function Dashboard() {
       <div className="flex items-center justify-end">
         <AddItem />
       </div>
+
+      <Items />
     </Shell>
   )
 }

@@ -70,7 +70,7 @@ export function AddItemForm({ onSubmit, isPending, form }: AddItemFormProps) {
             <FormItem>
               <FormLabel className="flex h-48 w-full cursor-pointer items-center justify-center border border-dashed shadow">
                 {preview ? (
-                  <div className="relative size-full">
+                  <div className="relative h-full w-2/5">
                     <Image src={preview} alt="Selected Image" fill />
                   </div>
                 ) : (
