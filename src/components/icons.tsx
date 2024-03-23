@@ -1,7 +1,7 @@
 /** Originally from `skateshop`
  * @link https://github.com/sadmann7/skateshop/blob/main/src/components/icons.tsx
  */
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
+import { DotsHorizontalIcon, ExclamationTriangleIcon } from "@radix-ui/react-icons"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -176,4 +176,5 @@ export const Icons = {
     </svg>
   ),
   more: DotsHorizontalIcon,
+  notFound: ExclamationTriangleIcon
 }
