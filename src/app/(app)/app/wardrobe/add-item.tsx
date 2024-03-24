@@ -30,7 +30,6 @@ export function AddItem() {
   const generateUploadUrl = useMutation(api.wardrobe.generateUploadUrl)
   const createItem = useMutation(api.wardrobe.createItem)
 
-  const [isPending, startTransition] = React.useTransition()
   const [open, setOpen] = React.useState(false)
 
   const form = useForm<Input>({
@@ -44,38 +43,36 @@ export function AddItem() {
     },
   })
 
-  const onSubmit = (values: Input) => {
-    startTransition(async () => {
-      try {
-        const postUrl = await generateUploadUrl()
+  const onSubmit = async (values: Input) => {
+    try {
+      const postUrl = await generateUploadUrl()
 
-        const imageType = values.image[0].type
+      const imageType = values.image[0].type
 
-        const result = await fetch(postUrl, {
-          method: "POST",
-          headers: { "Content-Type": imageType },
-          body: values.image[0],
-        })
+      const result = await fetch(postUrl, {
+        method: "POST",
+        headers: { "Content-Type": imageType },
+        body: values.image[0],
+      })
 
-        const { storageId } = (await result.json()) as {
-          storageId: Id<"_storage">
-        }
-
-        await createItem({
-          brand: values.brand,
-          category: values.category,
-          color: values.color,
-          size: values.size,
-          imageId: storageId,
-        })
-
-        setOpen(false)
-        toast.success("Item added to wardrobe!")
-        form.reset()
-      } catch (err) {
-        catchError(err)
+      const { storageId } = (await result.json()) as {
+        storageId: Id<"_storage">
       }
-    })
+
+      await createItem({
+        brand: values.brand,
+        category: values.category,
+        color: values.color,
+        size: values.size,
+        imageId: storageId,
+      })
+
+      setOpen(false)
+      toast.success("Item added to wardrobe!")
+      form.reset()
+    } catch (err) {
+      catchError(err)
+    }
   }
 
   return (
@@ -93,7 +90,7 @@ export function AddItem() {
             Add a new clothing item to your wardrobe
           </DialogDescription>
         </DialogHeader>
-        <AddItemForm onSubmit={onSubmit} isPending={isPending} form={form} />
+        <AddItemForm onSubmit={onSubmit} form={form} />
       </DialogContent>
     </Dialog>
   )

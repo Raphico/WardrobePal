@@ -28,7 +28,6 @@ import type { categorySchema, colorSchema, itemSchema } from "./item"
 
 interface AddItemFormProps {
   onSubmit: (values: z.infer<typeof itemSchema>) => void
-  isPending: boolean
   form: UseFormReturn<
     {
       image: FileList
@@ -42,7 +41,7 @@ interface AddItemFormProps {
   >
 }
 
-export function AddItemForm({ onSubmit, isPending, form }: AddItemFormProps) {
+export function AddItemForm({ onSubmit, form }: AddItemFormProps) {
   const [preview, setPreview] = React.useState<string | null>(null)
 
   function getImageData(event: React.ChangeEvent<HTMLInputElement>) {
@@ -192,8 +191,10 @@ export function AddItemForm({ onSubmit, isPending, form }: AddItemFormProps) {
           )}
         />
 
-        <Button disabled={isPending} className="mt-4">
-          {isPending && <Icons.spinner className="mr-2 size-4 animate-spin" />}
+        <Button disabled={form.formState.isSubmitting} className="mt-4">
+          {form.formState.isSubmitting && (
+            <Icons.spinner className="mr-2 size-4 animate-spin" />
+          )}
           Add Item
         </Button>
       </form>

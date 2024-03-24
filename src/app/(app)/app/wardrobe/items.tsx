@@ -4,7 +4,6 @@ import Image from "next/image"
 import { useQuery } from "convex/react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
 import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../convex/_generated/api"
@@ -47,7 +46,7 @@ export function Items() {
                     alt="Clothing Item image"
                     width={150}
                     height={150}
-                    className="bg-muted"
+                    className="bg-muted object-contain"
                   />
                 </div>
               </CardContent>
@@ -58,5 +57,3 @@ export function Items() {
     </>
   )
 }
-
-//https://calculating-dragon-48.convex.cloud/api/storage/kg21ghtw97wz1zpajgf6ntghts6nstz0
