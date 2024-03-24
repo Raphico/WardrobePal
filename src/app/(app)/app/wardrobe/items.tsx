@@ -17,10 +17,11 @@ export function Items() {
   return (
     <>
       {isLoading ? (
-        <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {Array.from({ length: 8 }, (_, index) => (
-            <Skeleton key={index} className="h-64 w-48" />
-          ))}
+        <section className="flex items-center justify-center">
+          <Icons.spinner
+            className="size-6 animate-spin text-muted-foreground"
+            aria-hidden="true"
+          />
         </section>
       ) : !items.length ? (
         <div className="flex flex-col items-center justify-center space-y-1 pt-32">
