@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "calculating-dragon-48.convex.cloud",
       },
+      {
+        hostname: "groovy-hamster-385.convex.cloud",
+      },
     ],
   },
   // Already doing linting and typechecking as separate tasks in CI
