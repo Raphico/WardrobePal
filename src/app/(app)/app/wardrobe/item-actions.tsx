@@ -1,11 +1,12 @@
 import * as React from "react"
+import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "convex/react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import type { z } from "zod"
 
-import { catchError } from "@/lib/utils"
+import { catchError, cn } from "@/lib/utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,6 +17,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -45,6 +48,7 @@ import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../convex/_generated/api"
 import type { Id } from "../../../../../convex/_generated/dataModel"
+import { colors } from "./constant"
 import { itemSchema, type Item } from "./item"
 import { AddItemForm } from "./item-form"
 
@@ -62,6 +66,7 @@ export function ItemActions({ item }: ItemsActionsProps) {
   const [showEdit, setShowEdit] = React.useState(false)
   const [showWorn, setShowWorn] = React.useState(false)
   const [showDelete, setShowDelete] = React.useState(false)
+  const [showView, setShowView] = React.useState(false)
 
   const form = useForm<Input>({
     resolver: zodResolver(itemSchema),
@@ -128,6 +133,13 @@ export function ItemActions({ item }: ItemsActionsProps) {
             Edit
           </DropdownMenuItem>
           <DropdownMenuItem
+            onClick={() => setShowView((prev) => !prev)}
+            className="cursor-pointer"
+          >
+            <Icons.view className="mr-2 size-4" aria-hidden="true" />
+            View
+          </DropdownMenuItem>
+          <DropdownMenuItem
             onClick={() => setShowWorn((prev) => !prev)}
             className="cursor-pointer"
           >
@@ -157,6 +169,42 @@ export function ItemActions({ item }: ItemsActionsProps) {
             type="edit"
             imageUrl={item.imageUrl}
           />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showView} onOpenChange={setShowView}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="capitalize">{item.brand}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <AspectRatio
+              ratio={4 / 3}
+              className="flex items-center justify-center border"
+            >
+              <div className="relative h-full w-48">
+                <Image
+                  src={item.imageUrl}
+                  alt="Clothing item image"
+                  className="object-cover"
+                  fill
+                  loading="lazy"
+                />
+              </div>
+            </AspectRatio>
+            <div className="flex items-center space-x-2">
+              <Badge>{item.category}</Badge>
+              <Badge
+                className={cn(
+                  colors.find((color) => color.name === item.color)?.color,
+                  item.color === "white" && "text-black"
+                )}
+              >
+                {item.color}
+              </Badge>
+              <Badge variant="secondary">{item.size}</Badge>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
 
