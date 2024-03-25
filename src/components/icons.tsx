@@ -4,6 +4,11 @@
 import {
   DotsHorizontalIcon,
   ExclamationTriangleIcon,
+  EyeOpenIcon,
+  MinusIcon,
+  Pencil1Icon,
+  PlusIcon,
+  TrashIcon,
 } from "@radix-ui/react-icons"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
@@ -178,6 +183,29 @@ export const Icons = {
       />
     </svg>
   ),
+  count: ({ ...props }: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M4 4v16" />
+      <path d="M9 4v16" />
+      <path d="M14 4v16" />
+      <path d="M19 4v16" />
+      <path d="M22 6 2 18" />
+    </svg>
+  ),
+  plus: PlusIcon,
+  minus: MinusIcon,
+  edit: Pencil1Icon,
+  delete: TrashIcon,
+  view: EyeOpenIcon,
   more: DotsHorizontalIcon,
   notFound: ExclamationTriangleIcon,
 }

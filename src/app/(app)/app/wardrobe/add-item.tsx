@@ -90,7 +90,7 @@ export function AddItem() {
             Add a new clothing item to your wardrobe
           </DialogDescription>
         </DialogHeader>
-        <AddItemForm onSubmit={onSubmit} form={form} />
+        <AddItemForm onSubmit={onSubmit} form={form} type="add" />
       </DialogContent>
     </Dialog>
   )

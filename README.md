@@ -19,7 +19,7 @@ A web app for managing clothing inventory and creating virtual outfits
 - [x] add landing page
 - [x] setup convex
 - [x] Implement authentication with clerk
-- [ ] Develop wardrobe page with CRUD operations for clothing items
+- [x] Develop wardrobe page with CRUD operations for clothing items
 - [ ] Add search and filtering functionality for the wardrobe page
 - more
 

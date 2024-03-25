@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../convex/_generated/api"
+import type { Item } from "./item"
+import { ItemActions } from "./item-actions"
 
 export function Items() {
   const items = useQuery(api.wardrobe.getItems)
@@ -33,20 +35,20 @@ export function Items() {
         <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {items.map((item) => (
             <Card key={item._id}>
-              <CardHeader className="flex-row items-center justify-between p-4">
+              <CardHeader className="flex-row items-center justify-between p-4 pt-2">
                 <CardTitle className="text-sm font-medium capitalize">
                   {item.brand}
                 </CardTitle>
-                <Icons.more className="size-4" aria-hidden="true" />
+                <ItemActions item={item as Item} />
               </CardHeader>
               <CardContent className="p-4 pt-0">
                 <div className="flex items-center justify-center">
                   <Image
                     src={item.imageUrl}
                     alt="Clothing Item image"
-                    width={150}
+                    width={110}
                     height={150}
-                    className="bg-muted object-contain"
+                    className="object-contain"
                   />
                 </div>
               </CardContent>

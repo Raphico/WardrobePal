@@ -59,3 +59,46 @@ export const getItems = query({
     )
   },
 })
+
+export const editItem = mutation({
+  args: {
+    itemId: v.id("items"),
+    prevImageId: v.id("_storage"),
+    imageId: v.id("_storage"),
+    brand: v.string(),
+    size: v.string(),
+    color: v.string(),
+    category: v.string(),
+  },
+  async handler(ctx, args) {
+    await verifyCurrentUserHasAccess(ctx)
+
+    await ctx.storage.delete(args.prevImageId)
+
+    await ctx.db.patch(args.itemId, {
+      imageId: args.imageId,
+      brand: args.brand,
+      size: args.size,
+      color: args.color,
+      category: args.category,
+    })
+  },
+})
+
+export const deleteItem = mutation({
+  args: {
+    itemId: v.id("items"),
+  },
+  async handler(ctx, args) {
+    await verifyCurrentUserHasAccess(ctx)
+
+    const item = await ctx.db.get(args.itemId)
+
+    if (!item) {
+      throw new Error("Unauthorized")
+    }
+
+    await ctx.storage.delete(item.imageId)
+    await ctx.db.delete(item._id)
+  },
+})

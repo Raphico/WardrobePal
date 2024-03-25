@@ -11,7 +11,7 @@ import { absoluteUrl, cn } from "@/lib/utils"
 import ConvexClientProvider from "./convex-client-provider"
 import { siteConfig } from "./site"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

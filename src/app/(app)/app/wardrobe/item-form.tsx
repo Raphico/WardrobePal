@@ -27,6 +27,8 @@ import { categories, colors } from "./constant"
 import type { categorySchema, colorSchema, itemSchema } from "./item"
 
 interface AddItemFormProps {
+  type: "edit" | "add"
+  imageUrl?: string
   onSubmit: (values: z.infer<typeof itemSchema>) => void
   form: UseFormReturn<
     {
@@ -41,7 +43,12 @@ interface AddItemFormProps {
   >
 }
 
-export function AddItemForm({ onSubmit, form }: AddItemFormProps) {
+export function AddItemForm({
+  onSubmit,
+  form,
+  imageUrl,
+  type,
+}: AddItemFormProps) {
   const [preview, setPreview] = React.useState<string | null>(null)
 
   function getImageData(event: React.ChangeEvent<HTMLInputElement>) {
@@ -71,6 +78,10 @@ export function AddItemForm({ onSubmit, form }: AddItemFormProps) {
                 {preview ? (
                   <div className="relative h-full w-2/5">
                     <Image src={preview} alt="Selected Image" fill />
+                  </div>
+                ) : imageUrl ? (
+                  <div className="relative h-full w-2/5">
+                    <Image src={imageUrl} alt="Selected Image" fill />
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center space-y-2">
@@ -195,7 +206,7 @@ export function AddItemForm({ onSubmit, form }: AddItemFormProps) {
           {form.formState.isSubmitting && (
             <Icons.spinner className="mr-2 size-4 animate-spin" />
           )}
-          Add Item
+          {type === "add" ? "Add Item" : "Save Changes"}
         </Button>
       </form>
     </Form>

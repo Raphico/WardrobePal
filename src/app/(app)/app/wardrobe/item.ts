@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+import type { Id } from "../../../../../convex/_generated/dataModel"
+
 export const colorSchema = z
   .enum([
     "black",
@@ -44,3 +46,13 @@ export const itemSchema = z.object({
   color: colorSchema,
   category: categorySchema,
 })
+
+export type Item = {
+  imageUrl: string
+  _id: Id<"items">
+  imageId: Id<"_storage">
+  brand: string
+  size: string
+  color: z.infer<typeof colorSchema>
+  category: z.infer<typeof categorySchema>
+}
