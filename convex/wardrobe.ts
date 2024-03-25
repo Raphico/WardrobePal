@@ -1,6 +1,7 @@
 import { v } from "convex/values"
 
 import { mutation, query } from "./_generated/server"
+import { verifyCurrentUserHasAccess } from "./util"
 
 export const generateUploadUrl = mutation(async (ctx) => {
   const identity = await ctx.auth.getUserIdentity()
@@ -21,22 +22,7 @@ export const createItem = mutation({
     category: v.string(),
   },
   async handler(ctx, args) {
-    const identity = await ctx.auth.getUserIdentity()
-
-    if (!identity) {
-      throw new Error("You must be logged in to create an item.")
-    }
-
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_tokenIdentifier", (q) =>
-        q.eq("tokenIdentifier", identity.tokenIdentifier)
-      )
-      .unique()
-
-    if (!user) {
-      throw new Error("User not found. Please check your authentication.")
-    }
+    const user = await verifyCurrentUserHasAccess(ctx)
 
     await ctx.db.insert("items", {
       userId: user._id,
@@ -52,22 +38,7 @@ export const createItem = mutation({
 export const getItems = query({
   args: {},
   async handler(ctx) {
-    const identity = await ctx.auth.getUserIdentity()
-
-    if (!identity) {
-      throw new Error("You must be logged in to get items.")
-    }
-
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_tokenIdentifier", (q) =>
-        q.eq("tokenIdentifier", identity.tokenIdentifier)
-      )
-      .unique()
-
-    if (!user) {
-      throw new Error("User not found. Please check your authentication.")
-    }
+    const user = await verifyCurrentUserHasAccess(ctx)
 
     const items = await ctx.db
       .query("items")

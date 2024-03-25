@@ -17,6 +17,7 @@ import type {
 import type * as clerk from "../clerk.js";
 import type * as http from "../http.js";
 import type * as users from "../users.js";
+import type * as util from "../util.js";
 import type * as wardrobe from "../wardrobe.js";
 
 /**
@@ -31,6 +32,7 @@ declare const fullApi: ApiFromModules<{
   clerk: typeof clerk;
   http: typeof http;
   users: typeof users;
+  util: typeof util;
   wardrobe: typeof wardrobe;
 }>;
 export declare const api: FilterApi<
