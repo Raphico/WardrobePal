@@ -50,7 +50,7 @@ import { api } from "../../../../../convex/_generated/api"
 import type { Id } from "../../../../../convex/_generated/dataModel"
 import { colors } from "./constant"
 import { itemSchema, type Item } from "./item"
-import { AddItemForm } from "./item-form"
+import { ItemForm } from "./item-form"
 
 type Input = z.infer<typeof itemSchema>
 
@@ -81,23 +81,30 @@ export function ItemActions({ item }: ItemsActionsProps) {
 
   const onSubmit = async (values: Input) => {
     try {
-      const postUrl = await generateUploadUrl()
+      let storageId
 
-      const imageType = values.image[0].type
+      // Only upload a new image if the user has selected one
+      if (values.image) {
+        const postUrl = await generateUploadUrl()
 
-      const result = await fetch(postUrl, {
-        method: "POST",
-        headers: { "Content-Type": imageType },
-        body: values.image[0],
-      })
+        const imageType = values.image[0].type
 
-      const { storageId } = (await result.json()) as {
-        storageId: Id<"_storage">
+        const result = await fetch(postUrl, {
+          method: "POST",
+          headers: { "Content-Type": imageType },
+          body: values.image[0],
+        })
+
+        const { storageId: newStorageId } = (await result.json()) as {
+          storageId: Id<"_storage">
+        }
+
+        storageId = newStorageId
       }
 
       await editItem({
         itemId: item._id,
-        prevImageId: item.imageId,
+        prevImageId: storageId ? item.imageId : undefined,
         brand: values.brand,
         category: values.category,
         color: values.color,
@@ -163,7 +170,7 @@ export function ItemActions({ item }: ItemsActionsProps) {
             <DialogTitle>Edit item</DialogTitle>
             <DialogDescription>Make changes to clothing item</DialogDescription>
           </DialogHeader>
-          <AddItemForm
+          <ItemForm
             onSubmit={onSubmit}
             form={form}
             type="edit"

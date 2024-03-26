@@ -2,7 +2,7 @@ import { z } from "zod"
 
 import type { Id } from "../../../../../convex/_generated/dataModel"
 
-export const colorSchema = z
+const colorSchema = z
   .enum([
     "black",
     "white",
@@ -21,7 +21,7 @@ export const colorSchema = z
   ])
   .default("black")
 
-export const categorySchema = z
+const categorySchema = z
   .enum([
     "tops",
     "bottoms",
@@ -35,8 +35,9 @@ export const categorySchema = z
 
 export const itemSchema = z.object({
   image: z
-    .custom<FileList>((val) => val instanceof FileList, "Required")
-    .refine((files) => files.length > 0, `Required`),
+    .custom<FileList>((val) => val instanceof FileList)
+    .refine((files) => files.length > 0)
+    .optional(),
   brand: z.string().min(1, {
     message: "Brand name must is required",
   }),

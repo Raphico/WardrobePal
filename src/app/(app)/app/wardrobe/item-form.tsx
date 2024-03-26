@@ -24,32 +24,17 @@ import {
 import { Icons } from "@/components/icons"
 
 import { categories, colors } from "./constant"
-import type { categorySchema, colorSchema, itemSchema } from "./item"
+import type { itemSchema } from "./item"
 
-interface AddItemFormProps {
+interface ItemFormProps {
   type: "edit" | "add"
+  onSubmit: (values: z.infer<typeof itemSchema>) => Promise<void>
+  form: UseFormReturn<z.infer<typeof itemSchema>, unknown, undefined>
   imageUrl?: string
-  onSubmit: (values: z.infer<typeof itemSchema>) => void
-  form: UseFormReturn<
-    {
-      image: FileList
-      brand: string
-      size: string
-      color: z.infer<typeof colorSchema>
-      category: z.infer<typeof categorySchema>
-    },
-    unknown,
-    undefined
-  >
 }
 
-export function AddItemForm({
-  onSubmit,
-  form,
-  imageUrl,
-  type,
-}: AddItemFormProps) {
-  const [preview, setPreview] = React.useState<string | null>(null)
+export function ItemForm({ onSubmit, form, type, imageUrl }: ItemFormProps) {
+  const [preview, setPreview] = React.useState<string | null>(imageUrl || null)
 
   function getImageData(event: React.ChangeEvent<HTMLInputElement>) {
     // FileList is immutable, so we need to create a new one
@@ -72,16 +57,13 @@ export function AddItemForm({
         <FormField
           control={form.control}
           name="image"
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           render={({ field: { onChange, value, ...rest } }) => (
             <FormItem>
               <FormLabel className="flex h-48 w-full cursor-pointer items-center justify-center border border-dashed shadow">
                 {preview ? (
-                  <div className="relative h-full w-2/5">
+                  <div className="relative h-full w-[28%]">
                     <Image src={preview} alt="Selected Image" fill />
-                  </div>
-                ) : imageUrl ? (
-                  <div className="relative h-full w-2/5">
-                    <Image src={imageUrl} alt="Selected Image" fill />
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center space-y-2">

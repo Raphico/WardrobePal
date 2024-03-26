@@ -22,7 +22,7 @@ import { Icons } from "@/components/icons"
 import { api } from "../../../../../convex/_generated/api"
 import { type Id } from "../../../../../convex/_generated/dataModel"
 import { itemSchema } from "./item"
-import { AddItemForm } from "./item-form"
+import { ItemForm } from "./item-form"
 
 type Input = z.infer<typeof itemSchema>
 
@@ -44,6 +44,14 @@ export function AddItem() {
   })
 
   const onSubmit = async (values: Input) => {
+    if (!values.image) {
+      form.setError("image", {
+        type: "validate",
+        message: "Image is required",
+      })
+      return
+    }
+
     try {
       const postUrl = await generateUploadUrl()
 
@@ -90,7 +98,7 @@ export function AddItem() {
             Add a new clothing item to your wardrobe
           </DialogDescription>
         </DialogHeader>
-        <AddItemForm onSubmit={onSubmit} form={form} type="add" />
+        <ItemForm onSubmit={onSubmit} form={form} type="add" />
       </DialogContent>
     </Dialog>
   )

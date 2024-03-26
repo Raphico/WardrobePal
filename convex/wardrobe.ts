@@ -63,8 +63,8 @@ export const getItems = query({
 export const editItem = mutation({
   args: {
     itemId: v.id("items"),
-    prevImageId: v.id("_storage"),
-    imageId: v.id("_storage"),
+    prevImageId: v.optional(v.id("_storage")),
+    imageId: v.optional(v.id("_storage")),
     brand: v.string(),
     size: v.string(),
     color: v.string(),
@@ -73,15 +73,24 @@ export const editItem = mutation({
   async handler(ctx, args) {
     await verifyCurrentUserHasAccess(ctx)
 
-    await ctx.storage.delete(args.prevImageId)
+    if (args.imageId && args.prevImageId) {
+      await ctx.storage.delete(args.prevImageId)
 
-    await ctx.db.patch(args.itemId, {
-      imageId: args.imageId,
-      brand: args.brand,
-      size: args.size,
-      color: args.color,
-      category: args.category,
-    })
+      await ctx.db.patch(args.itemId, {
+        imageId: args.imageId,
+        brand: args.brand,
+        size: args.size,
+        color: args.color,
+        category: args.category,
+      })
+    } else {
+      await ctx.db.patch(args.itemId, {
+        brand: args.brand,
+        size: args.size,
+        color: args.color,
+        category: args.category,
+      })
+    }
   },
 })
 
