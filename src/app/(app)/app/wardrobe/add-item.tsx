@@ -88,7 +88,7 @@ export function AddItem() {
       <DialogTrigger asChild>
         <Button size="sm" aria-label="Add Item" className="space-x-2">
           <Icons.add className="size-4" aria-hidden="true" />
-          <span className="hidden sm:inline-block">Add Item</span>
+          Add Item
         </Button>
       </DialogTrigger>
       <DialogContent>
