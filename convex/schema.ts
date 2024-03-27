@@ -9,6 +9,7 @@ export default defineSchema({
     size: v.string(),
     color: v.string(),
     category: v.string(),
+    wornCount: v.number(),
   }).index("by_userId", ["userId"]),
   users: defineTable({
     tokenIdentifier: v.string(),

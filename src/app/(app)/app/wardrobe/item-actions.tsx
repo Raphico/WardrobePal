@@ -60,8 +60,10 @@ interface ItemsActionsProps {
 
 export function ItemActions({ item }: ItemsActionsProps) {
   const deleteItem = useMutation(api.wardrobe.deleteItem)
-  const generateUploadUrl = useMutation(api.wardrobe.generateUploadUrl)
+  const incrementWornCount = useMutation(api.wardrobe.incrementWornCount)
+  const decrementWornCount = useMutation(api.wardrobe.decrementWornCount)
   const editItem = useMutation(api.wardrobe.editItem)
+  const generateUploadUrl = useMutation(api.wardrobe.generateUploadUrl)
 
   const [showEdit, setShowEdit] = React.useState(false)
   const [showWorn, setShowWorn] = React.useState(false)
@@ -230,17 +232,37 @@ export function ItemActions({ item }: ItemsActionsProps) {
                   variant="outline"
                   size="icon"
                   className="size-8 shrink-0 rounded-full"
+                  onClick={async () => {
+                    try {
+                      await decrementWornCount({
+                        itemId: item._id,
+                      })
+                    } catch (err) {
+                      catchError(err)
+                    }
+                  }}
                 >
                   <Icons.minus className="size-4" aria-hidden="true" />
                   <span className="sr-only">Decrease</span>
                 </Button>
                 <div className="flex-1 text-center">
-                  <div className="text-7xl font-bold tracking-tighter">0</div>
+                  <div className="text-7xl font-bold tracking-tighter">
+                    {item.wornCount}
+                  </div>
                 </div>
                 <Button
                   variant="outline"
                   size="icon"
                   className="size-8 shrink-0 rounded-full"
+                  onClick={async () => {
+                    try {
+                      await incrementWornCount({
+                        itemId: item._id,
+                      })
+                    } catch (err) {
+                      catchError(err)
+                    }
+                  }}
                 >
                   <Icons.plus className="size-4" aria-hidden="true" />
                   <span className="sr-only">Increase</span>

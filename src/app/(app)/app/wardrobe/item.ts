@@ -34,10 +34,7 @@ const categorySchema = z
   .default("tops")
 
 export const itemSchema = z.object({
-  image: z
-    .custom<FileList>((val) => val instanceof FileList)
-    .refine((files) => files.length > 0)
-    .optional(),
+  image: z.custom<FileList>((val) => val instanceof FileList).optional(),
   brand: z.string().min(1, {
     message: "Brand name must is required",
   }),
@@ -56,4 +53,5 @@ export type Item = {
   size: string
   color: z.infer<typeof colorSchema>
   category: z.infer<typeof categorySchema>
+  wornCount: number
 }

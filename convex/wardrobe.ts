@@ -31,6 +31,7 @@ export const createItem = mutation({
       size: args.size,
       color: args.color,
       category: args.category,
+      wornCount: 0,
     })
   },
 })
@@ -109,5 +110,43 @@ export const deleteItem = mutation({
 
     await ctx.storage.delete(item.imageId)
     await ctx.db.delete(item._id)
+  },
+})
+
+export const incrementWornCount = mutation({
+  args: {
+    itemId: v.id("items"),
+  },
+  async handler(ctx, args) {
+    await verifyCurrentUserHasAccess(ctx)
+
+    const item = await ctx.db.get(args.itemId)
+
+    if (!item) {
+      throw new Error("Item not found.")
+    }
+
+    await ctx.db.patch(args.itemId, {
+      wornCount: item.wornCount + 1,
+    })
+  },
+})
+
+export const decrementWornCount = mutation({
+  args: {
+    itemId: v.id("items"),
+  },
+  async handler(ctx, args) {
+    await verifyCurrentUserHasAccess(ctx)
+
+    const item = await ctx.db.get(args.itemId)
+
+    if (!item) {
+      throw new Error("Item not found.")
+    }
+
+    await ctx.db.patch(args.itemId, {
+      wornCount: item.wornCount - 1,
+    })
   },
 })
