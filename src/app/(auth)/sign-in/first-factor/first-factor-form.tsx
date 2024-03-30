@@ -40,7 +40,7 @@ export function FirstFactorForm() {
         await setActive({ session: completeSignIn.createdSessionId })
 
         // Redirect user
-        router.push("/app/dashboard")
+        router.push("/app/wardrobe")
       }
     } catch (err) {
       catchClerkError(err)

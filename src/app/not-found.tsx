@@ -13,7 +13,7 @@ export default function NotFound() {
         <p className="pb-2 text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist
         </p>
-        <Link href="/" className={cn(buttonVariants())}>
+        <Link href="/app/wardrobe" className={cn(buttonVariants())}>
           Go to home
         </Link>
       </div>

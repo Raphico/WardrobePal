@@ -86,8 +86,8 @@ export function AddItem() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" aria-label="Add Item" className="space-x-2">
-          <Icons.add className="size-4" aria-hidden="true" />
+        <Button size="sm" aria-label="Add Item">
+          <Icons.add className="mr-2 size-4" aria-hidden="true" />
           Add Item
         </Button>
       </DialogTrigger>
