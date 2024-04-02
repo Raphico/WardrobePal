@@ -37,14 +37,26 @@ export const createItem = mutation({
 })
 
 export const getItems = query({
-  args: {},
-  async handler(ctx) {
+  args: {
+    colors: v.optional(v.array(v.string())),
+    categories: v.optional(v.array(v.string())),
+  },
+  async handler(ctx, args) {
     const user = await verifyCurrentUserHasAccess(ctx)
 
-    const items = await ctx.db
+    let items = await ctx.db
       .query("items")
       .withIndex("by_userId", (q) => q.eq("userId", user._id))
       .collect()
+
+    const { colors, categories } = args
+
+    if (colors?.length) {
+      items = items.filter((item) => colors.includes(item.color))
+    }
+    if (categories?.length) {
+      items = items.filter((item) => categories.includes(item.category))
+    }
 
     return Promise.all(
       items.map(async (item) => {

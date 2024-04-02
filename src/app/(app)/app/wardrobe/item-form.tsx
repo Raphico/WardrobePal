@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select"
 import { Icons } from "@/components/icons"
 
-import { categories, colors } from "./constant"
+import { categories, colors } from "../constant"
 import type { itemSchema } from "./item"
 
 interface ItemFormProps {
@@ -122,7 +122,7 @@ export function ItemForm({ onSubmit, form, type, imageUrl }: ItemFormProps) {
                   </FormControl>
                   <SelectContent>
                     {categories.map((category) => (
-                      <SelectItem key={category.name} value={category.name}>
+                      <SelectItem key={category.value} value={category.value}>
                         {category.label}
                       </SelectItem>
                     ))}
@@ -149,13 +149,13 @@ export function ItemForm({ onSubmit, form, type, imageUrl }: ItemFormProps) {
                   </FormControl>
                   <SelectContent>
                     {colors.map((color) => (
-                      <SelectItem key={color.name} value={color.name}>
+                      <SelectItem key={color.value} value={color.value}>
                         <span
                           className={cn(
                             "mr-2 inline-block size-4",
                             color.color,
                             {
-                              border: color.name === "white",
+                              border: color.value === "white",
                             }
                           )}
                         />

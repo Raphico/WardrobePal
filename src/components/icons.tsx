@@ -2,6 +2,7 @@
  * @link https://github.com/sadmann7/skateshop/blob/main/src/components/icons.tsx
  */
 import {
+  CheckIcon,
   DotsHorizontalIcon,
   ExclamationTriangleIcon,
   EyeOpenIcon,
@@ -208,4 +209,5 @@ export const Icons = {
   view: EyeOpenIcon,
   more: DotsHorizontalIcon,
   notFound: ExclamationTriangleIcon,
+  check: CheckIcon,
 }
