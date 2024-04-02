@@ -42,7 +42,7 @@ export function AddItemToCanvas() {
         </Button>
       </DrawerTrigger>
       <DrawerContent className="h-[90dvh]">
-        <div className="container max-w-5xl">
+        <div className="container max-w-5xl space-y-6">
           <DrawerHeader className="flex flex-col items-start justify-center px-0 sm:flex-row sm:justify-between">
             <DrawerTitle className="text-base">Select an Item</DrawerTitle>
             <div className="flex items-center justify-center gap-2">
@@ -78,7 +78,7 @@ export function AddItemToCanvas() {
             <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {items.map((item) => (
                 <Card key={item._id}>
-                  <CardContent className="p-4 pt-0">
+                  <CardContent className="p-4">
                     <div className="flex items-center justify-center">
                       <Image
                         src={item.imageUrl}
