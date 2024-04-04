@@ -14,7 +14,7 @@ export default defineSchema({
   outfits: defineTable({
     userId: v.id("users"),
     imageId: v.id("_storage"),
-  }),
+  }).index("by_userId", ["userId"]),
   users: defineTable({
     tokenIdentifier: v.string(),
     username: v.string(),
