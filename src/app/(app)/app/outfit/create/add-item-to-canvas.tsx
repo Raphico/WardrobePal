@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "next/image"
 import { useQuery } from "convex/react"
 
 import { Button } from "@/components/ui/button"
@@ -11,6 +10,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import { BlurImage } from "@/components/blur-image"
 import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../../convex/_generated/api"
@@ -108,7 +108,7 @@ export function AddItemToCanvas({
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center justify-center">
-                      <Image
+                      <BlurImage
                         src={item.imageUrl}
                         alt="Clothing Item image"
                         width={110}

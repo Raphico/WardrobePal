@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "next/image"
 import type { UseFormReturn } from "react-hook-form"
 import type { z } from "zod"
 
@@ -21,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { BlurImage } from "@/components/blur-image"
 import { Icons } from "@/components/icons"
 
 import { categories, colors } from "../constant"
@@ -63,7 +63,7 @@ export function ItemForm({ onSubmit, form, type, imageUrl }: ItemFormProps) {
               <FormLabel className="flex h-48 w-full cursor-pointer items-center justify-center border border-dashed shadow">
                 {preview ? (
                   <div className="relative h-full w-[28%]">
-                    <Image src={preview} alt="Selected Image" fill />
+                    <BlurImage src={preview} alt="Selected Image" fill />
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center space-y-2">

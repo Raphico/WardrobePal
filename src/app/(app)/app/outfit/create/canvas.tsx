@@ -142,8 +142,8 @@ const URLImage: React.FC<URLImageProps> = ({
       image={img}
       x={x}
       y={y}
-      scaleX={0.5}
-      scaleY={0.5}
+      width={110}
+      height={150}
       onClick={removeItemFromCanvas}
       alt="Clothing item"
       draggable

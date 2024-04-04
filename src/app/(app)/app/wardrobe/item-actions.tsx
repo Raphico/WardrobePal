@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "convex/react"
 import { useForm } from "react-hook-form"
@@ -44,6 +43,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { BlurImage } from "@/components/blur-image"
 import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../convex/_generated/api"
@@ -192,7 +192,7 @@ export function ItemActions({ item }: ItemsActionsProps) {
               className="flex items-center justify-center border"
             >
               <div className="relative h-full w-48">
-                <Image
+                <BlurImage
                   src={item.imageUrl}
                   alt="Clothing item image"
                   className="object-cover"

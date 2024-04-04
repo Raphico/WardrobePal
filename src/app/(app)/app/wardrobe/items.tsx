@@ -1,9 +1,9 @@
 "use client"
 
-import Image from "next/image"
 import { useQuery } from "convex/react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { BlurImage } from "@/components/blur-image"
 import { Icons } from "@/components/icons"
 
 import { api } from "../../../../../convex/_generated/api"
@@ -11,7 +11,7 @@ import type { Item } from "./item"
 import { ItemActions } from "./item-actions"
 
 export function Items() {
-  const items = useQuery(api.wardrobe.getItems)
+  const items = useQuery(api.wardrobe.getItems, {})
 
   const isLoading = !items
 
@@ -43,7 +43,7 @@ export function Items() {
               </CardHeader>
               <CardContent className="p-4 pt-0">
                 <div className="flex items-center justify-center">
-                  <Image
+                  <BlurImage
                     src={item.imageUrl}
                     alt="Clothing Item image"
                     width={110}
