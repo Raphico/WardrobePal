@@ -5,11 +5,10 @@ import dynamic from "next/dynamic"
 
 import { Button } from "@/components/ui/button"
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import { Icons } from "@/components/icons"
 
 import { AddItemToCanvas } from "./add-item-to-canvas"
@@ -36,16 +35,16 @@ export default function CreateOutfitPage() {
             Clear
           </Button>
 
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <Icons.hint className="size-4" aria-hidden="true" />
-              </TooltipTrigger>
-              <TooltipContent className="border bg-popover text-popover-foreground">
-                <p>To remove an item from the canvas, click on it</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Popover>
+            <PopoverTrigger>
+              <Icons.hint className="size-4" aria-hidden="true" />
+            </PopoverTrigger>
+            <PopoverContent>
+              <p className="text-sm">
+                Tap on an item to remove it from the canvas
+              </p>
+            </PopoverContent>
+          </Popover>
         </div>
         <AddItemToCanvas
           itemsOnCanvas={itemsOnCanvas}
