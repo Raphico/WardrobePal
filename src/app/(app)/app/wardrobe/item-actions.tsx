@@ -63,7 +63,7 @@ export function ItemActions({ item }: ItemsActionsProps) {
   const incrementWornCount = useMutation(api.wardrobe.incrementWornCount)
   const decrementWornCount = useMutation(api.wardrobe.decrementWornCount)
   const editItem = useMutation(api.wardrobe.editItem)
-  const generateUploadUrl = useMutation(api.wardrobe.generateUploadUrl)
+  const generateUploadUrl = useMutation(api.files.generateUploadUrl)
 
   const [showEdit, setShowEdit] = React.useState(false)
   const [showWorn, setShowWorn] = React.useState(false)
@@ -205,7 +205,7 @@ export function ItemActions({ item }: ItemsActionsProps) {
               <Badge>{item.category}</Badge>
               <Badge
                 className={cn(
-                  colors.find((color) => color.name === item.color)?.color,
+                  colors.find((color) => color.value === item.color)?.color,
                   item.color === "white" && "text-black"
                 )}
               >

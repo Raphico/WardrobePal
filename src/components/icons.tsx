@@ -3,12 +3,14 @@
  */
 import {
   CheckIcon,
+  ChevronLeftIcon,
   DotsHorizontalIcon,
   ExclamationTriangleIcon,
   EyeOpenIcon,
   MinusIcon,
   Pencil1Icon,
   PlusIcon,
+  QuestionMarkCircledIcon,
   TrashIcon,
 } from "@radix-ui/react-icons"
 
@@ -210,4 +212,6 @@ export const Icons = {
   more: DotsHorizontalIcon,
   notFound: ExclamationTriangleIcon,
   check: CheckIcon,
+  chevronLeft: ChevronLeftIcon,
+  hint: QuestionMarkCircledIcon,
 }

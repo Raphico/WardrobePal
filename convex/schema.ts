@@ -11,6 +11,10 @@ export default defineSchema({
     category: v.string(),
     wornCount: v.number(),
   }).index("by_userId", ["userId"]),
+  outfits: defineTable({
+    userId: v.id("users"),
+    imageId: v.id("_storage"),
+  }),
   users: defineTable({
     tokenIdentifier: v.string(),
     username: v.string(),

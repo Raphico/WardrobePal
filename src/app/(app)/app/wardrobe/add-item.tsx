@@ -27,7 +27,7 @@ import { ItemForm } from "./item-form"
 type Input = z.infer<typeof itemSchema>
 
 export function AddItem() {
-  const generateUploadUrl = useMutation(api.wardrobe.generateUploadUrl)
+  const generateUploadUrl = useMutation(api.files.generateUploadUrl)
   const createItem = useMutation(api.wardrobe.createItem)
 
   const [open, setOpen] = React.useState(false)

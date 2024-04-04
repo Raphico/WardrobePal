@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Image from "next/image"
 import { useQuery } from "convex/react"
@@ -18,9 +16,18 @@ import { Icons } from "@/components/icons"
 import { api } from "../../../../../../convex/_generated/api"
 import { categories, colors } from "../../constant"
 import { FilterItems } from "./filter-items"
+import type { ItemOnCanvasType } from "./item"
 
-export function AddItemToCanvas() {
-  const [showItem, setShowItem] = React.useState(false)
+interface AddItemToCanvasProps {
+  itemsOnCanvas: ItemOnCanvasType[]
+  setItemsOnCanvas: React.Dispatch<React.SetStateAction<ItemOnCanvasType[]>>
+}
+
+export function AddItemToCanvas({
+  itemsOnCanvas,
+  setItemsOnCanvas,
+}: AddItemToCanvasProps) {
+  const [showItem, setShowItems] = React.useState(false)
   const [selectedCategories, setSelectedCategories] = React.useState<string[]>(
     []
   )
@@ -31,10 +38,15 @@ export function AddItemToCanvas() {
     colors: selectedColors,
   })
 
-  const isLoading = !items
+  const itemsNotOnCanvas = items?.filter(
+    (item) =>
+      !itemsOnCanvas.some((itemOnCanvas) => itemOnCanvas.id === item._id)
+  )
+
+  const isLoading = !itemsNotOnCanvas
 
   return (
-    <Drawer open={showItem} onOpenChange={setShowItem}>
+    <Drawer open={showItem} onOpenChange={setShowItems}>
       <DrawerTrigger asChild>
         <Button size="sm">
           <Icons.add className="mr-2 size-4" aria-hidden="true" />
@@ -67,7 +79,7 @@ export function AddItemToCanvas() {
                 aria-hidden="true"
               />
             </section>
-          ) : !items.length ? (
+          ) : !itemsNotOnCanvas.length ? (
             <div className="flex flex-col items-center justify-center space-y-1 pt-32">
               <Icons.empty className="size-16" aria-hidden="true" />
               <p className="text-sm text-muted-foreground">
@@ -76,8 +88,24 @@ export function AddItemToCanvas() {
             </div>
           ) : (
             <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {items.map((item) => (
-                <Card key={item._id}>
+              {itemsNotOnCanvas.map((item) => (
+                <Card
+                  key={item._id}
+                  onClick={() => {
+                    setItemsOnCanvas((prev) => [
+                      ...prev,
+                      {
+                        id: item._id,
+                        imageUrl: item.imageUrl,
+                        x: 0,
+                        y: 0,
+                        isDragging: false,
+                      },
+                    ])
+                    setShowItems(false)
+                  }}
+                  className="cursor-pointer"
+                >
                   <CardContent className="p-4">
                     <div className="flex items-center justify-center">
                       <Image
