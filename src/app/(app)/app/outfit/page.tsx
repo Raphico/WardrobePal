@@ -7,6 +7,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { Shell } from "@/components/shell"
 
+import { Outfits } from "./outfits"
+
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   title: "Outfit",
@@ -25,6 +27,8 @@ export default function OutfitPage() {
           Create Outfit
         </Link>
       </div>
+
+      <Outfits />
     </Shell>
   )
 }
