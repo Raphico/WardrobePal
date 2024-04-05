@@ -84,7 +84,7 @@ export function Canvas({ itemsOnCanvas, setItemsOnCanvas }: CanvasProps) {
       <KonvaStage
         ref={stageRef}
         width={window.innerWidth * widthMultiplier}
-        height={window.innerHeight * 0.42}
+        height={window.innerHeight * 0.45}
         className="rounded-lg border bg-card text-card-foreground shadow-sm"
       >
         <Layer>

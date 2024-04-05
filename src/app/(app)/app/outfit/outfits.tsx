@@ -34,7 +34,7 @@ export function Outfits() {
         <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {outfits.map((outfit) => (
             <Card key={outfit._id}>
-              <CardContent className="p-4">
+              <CardContent className="p-4 py-2">
                 <div className="flex w-full justify-end">
                   <OutfitActions
                     outfit={{ id: outfit._id, imageUrl: outfit.imageUrl }}
@@ -44,8 +44,8 @@ export function Outfits() {
                   <BlurImage
                     src={outfit.imageUrl}
                     alt="Outfit Image"
-                    width={110}
-                    height={150}
+                    width={150}
+                    height={110}
                     className="object-contain"
                   />
                 </div>

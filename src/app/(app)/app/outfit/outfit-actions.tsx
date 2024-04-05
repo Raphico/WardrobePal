@@ -47,7 +47,7 @@ export function OutfitActions({ outfit }: OutfitActionsProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Icons.verticalMore className="size-4" aria-hidden="true" />
+            <Icons.more className="size-4" aria-hidden="true" />
             <span className="sr-only">Item Actions</span>
           </Button>
         </DropdownMenuTrigger>
@@ -78,7 +78,7 @@ export function OutfitActions({ outfit }: OutfitActionsProps) {
             src={outfit.imageUrl}
             alt="Clothing item image"
             className="object-cover"
-            width={200}
+            width={250}
             height={200}
             loading="lazy"
           />

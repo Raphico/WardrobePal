@@ -62,7 +62,7 @@ export function ItemForm({ onSubmit, form, type, imageUrl }: ItemFormProps) {
             <FormItem>
               <FormLabel className="flex h-48 w-full cursor-pointer items-center justify-center border border-dashed shadow">
                 {preview ? (
-                  <div className="relative h-full w-[28%]">
+                  <div className="relative h-full w-1/3">
                     <BlurImage src={preview} alt="Selected Image" fill />
                   </div>
                 ) : (
