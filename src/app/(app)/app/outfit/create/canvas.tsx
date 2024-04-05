@@ -20,7 +20,8 @@ interface CanvasProps {
   setItemsOnCanvas: React.Dispatch<React.SetStateAction<ItemOnCanvasType[]>>
 }
 
-const LG_SCREEN = 1024
+export const DESKTOP_SCREEN = 1024
+const TABLET_SCREEN = 768
 
 export function Canvas({ itemsOnCanvas, setItemsOnCanvas }: CanvasProps) {
   const router = useRouter()
@@ -29,7 +30,12 @@ export function Canvas({ itemsOnCanvas, setItemsOnCanvas }: CanvasProps) {
 
   const stageRef = React.useRef<Konva.Stage | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
-  const widthMultiplier = window.innerWidth > LG_SCREEN ? 0.55 : 0.83
+  const widthMultiplier =
+    window.innerWidth > DESKTOP_SCREEN
+      ? 0.22
+      : window.innerWidth > TABLET_SCREEN
+        ? 0.32
+        : 0.82
 
   const addOutfit = async () => {
     setIsLoading(true)
@@ -78,7 +84,7 @@ export function Canvas({ itemsOnCanvas, setItemsOnCanvas }: CanvasProps) {
       <KonvaStage
         ref={stageRef}
         width={window.innerWidth * widthMultiplier}
-        height={window.innerHeight * 0.7}
+        height={window.innerHeight * 0.42}
         className="rounded-lg border bg-card text-card-foreground shadow-sm"
       >
         <Layer>

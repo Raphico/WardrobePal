@@ -14,5 +14,5 @@ export default function CreateOutfitLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <Shell className="max-w-4xl">{children}</Shell>
+  return <Shell className="max-w-sm">{children}</Shell>
 }
