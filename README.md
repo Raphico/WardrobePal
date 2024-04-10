@@ -11,6 +11,7 @@ A web app for managing clothing inventory and creating virtual outfits
 - **User Management:** [clerk](https://clerk.com/)
 - **Baas:** [Convex](https://www.convex.dev/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com)
+- **Canvas:**: [Konva](https://konvajs.org)
 
 ## Roadmap
 
