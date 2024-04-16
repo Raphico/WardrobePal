@@ -29,7 +29,7 @@ A web app for managing clothing inventory and creating virtual outfits
 1. Clone the repository
 
    ```bash
-   git clone https://github.com/Raphico/Zenflow
+   git clone https://github.com/Raphico/WardrobePal
    ```
 
 2. Install dependencies using npm
